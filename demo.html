@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style Spy demo page</title>
+  <style>
+    /* The page only uses --ss-* variables. The second value in each var() is the
+       plain fallback shown until a kit is pasted. */
+    body {
+      margin: 0;
+      font-family: var(--ss-font-1, system-ui, sans-serif);
+      color: var(--ss-text-1, #222);
+      background: var(--ss-bg-1, #fff);
+      line-height: 1.5;
+    }
+    h1, h2 { font-family: var(--ss-font-2, var(--ss-font-1, system-ui, sans-serif)); color: var(--ss-text-2, var(--ss-text-1, #222)); }
+    header { padding: 20px 32px; background: var(--ss-bg-2, #f0f0f0); border-bottom: 2px solid var(--ss-border-1, #ccc); }
+    header h1 { margin: 0; }
+    main { max-width: 760px; margin: 0 auto; padding: 24px 32px; }
+    .card { padding: 16px 20px; margin-bottom: 16px; background: var(--ss-bg-2, #f0f0f0); border: 1px solid var(--ss-border-1, #ccc); border-radius: 8px; }
+    a { color: var(--ss-text-2, #1f4fd8); }
+    .demo-button { padding: 8px 16px; font: inherit; color: var(--ss-bg-1, #fff); background: var(--ss-text-1, #222); border: 1px solid var(--ss-border-1, #222); border-radius: 6px; }
+    input.demo-input { padding: 8px; font: inherit; color: var(--ss-text-1, #222); background: var(--ss-bg-1, #fff); border: 1px solid var(--ss-border-2, var(--ss-border-1, #ccc)); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px; text-align: left; border-bottom: 1px solid var(--ss-border-1, #ccc); }
+
+    /* The paste box uses fixed colours so it stays readable with any kit. */
+    #panel { padding: 16px 20px; margin-bottom: 24px; color: #1c1f24; background: #fff; border: 2px solid #1f4fd8; border-radius: 8px; font-family: system-ui, sans-serif; }
+    #panel h2 { margin: 0 0 8px; font-family: system-ui, sans-serif; color: #1c1f24; font-size: 18px; }
+    #panel textarea { width: 100%; height: 160px; padding: 8px; font: 13px Consolas, monospace; border: 1px solid #b9bec6; border-radius: 6px; }
+    #panel button { padding: 8px 14px; margin-top: 8px; font: inherit; border: 1px solid #1f4fd8; border-radius: 6px; cursor: pointer; }
+    #apply { color: #fff; background: #1f4fd8; }
+    #reset { color: #1f4fd8; background: #fff; }
+  </style>
+  <style id="kit"></style>
+</head>
+<body>
+  <header>
+    <h1>Style Spy demo page</h1>
+    <p>A plain page that reads its look from CSS variables.</p>
+  </header>
+
+  <main>
+    <section id="panel">
+      <h2>Paste a kit here</h2>
+      <p>In the extension, click "Copy CSS" on a saved kit (or "Copy CSS variables" after a scan), paste it below, then press Apply.</p>
+      <textarea id="css" placeholder=":root { --ss-text-1: #111111; ... }" aria-label="Kit CSS"></textarea><br>
+      <button id="apply">Apply kit to this page</button>
+      <button id="reset">Reset to plain style</button>
+    </section>
+
+    <div class="card">
+      <h2>A heading</h2>
+      <p>This is body text on a card. It uses the kit's main text colour, its main font and its second background colour. Here is <a href="#">a link</a> inside the text.</p>
+      <button class="demo-button">A button</button>
+      <input class="demo-input" type="text" placeholder="A text field" aria-label="Sample field">
+    </div>
+
+    <div class="card">
+      <h2>A small table</h2>
+      <table>
+        <tr><th>Item</th><th>Uses variable</th></tr>
+        <tr><td>Page background</td><td>--ss-bg-1</td></tr>
+        <tr><td>Card background</td><td>--ss-bg-2</td></tr>
+        <tr><td>Text</td><td>--ss-text-1, --ss-text-2</td></tr>
+        <tr><td>Borders</td><td>--ss-border-1, --ss-border-2</td></tr>
+        <tr><td>Fonts</td><td>--ss-font-1, --ss-font-2</td></tr>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    const kit = document.getElementById("kit");
+    const box = document.getElementById("css");
+    document.getElementById("apply").onclick = () => { kit.textContent = box.value; };
+    document.getElementById("reset").onclick = () => { kit.textContent = ""; box.value = ""; };
+  </script>
+</body>
+</html>

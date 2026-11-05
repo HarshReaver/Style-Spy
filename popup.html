@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Spy</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Style Spy</h1>
+    <p>Grab the colours and fonts of the page you are on.</p>
+  </header>
+
+  <button id="scan" class="primary wide">Scan this page</button>
+  <p id="status" role="status"></p>
+
+  <section id="results" hidden>
+    <p id="source" class="muted"></p>
+
+    <h2>Text colours</h2>
+    <ul id="text" class="list"></ul>
+    <h2>Background colours</h2>
+    <ul id="background" class="list"></ul>
+    <h2>Border colours</h2>
+    <ul id="border" class="list"></ul>
+    <h2>Fonts</h2>
+    <ul id="fonts" class="list"></ul>
+
+    <h2>Save or export this kit</h2>
+    <div class="row">
+      <input id="name" type="text" placeholder="Kit name, e.g. Acme site" aria-label="Kit name">
+      <button id="save" class="primary">Save kit</button>
+    </div>
+    <div class="row">
+      <button id="copy-css">Copy CSS variables</button>
+      <button id="download-css">Download .css file</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Saved kits</h2>
+    <ul id="kits" class="kits"></ul>
+  </section>
+
+  <script src="scanner.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

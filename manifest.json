@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Style Spy",
+  "version": "1.0.0",
+  "description": "Scan a page for its colours and fonts, then save them as a kit and export CSS variables.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_title": "Style Spy",
+    "default_popup": "popup.html"
+  }
+}
