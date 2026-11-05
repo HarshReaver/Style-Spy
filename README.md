@@ -4,10 +4,11 @@ A Chrome extension (Manifest V3) that scans the page you are on, shows its main 
 
 ## Install
 
-1. Open `chrome://extensions` in Chrome.
-2. Turn on **Developer mode** (top right).
-3. Click **Load unpacked** and choose this folder (`13-Style-Spy`).
-4. Pin Style Spy from the puzzle-piece menu if you like, then open any website and click its icon.
+1. Download this repo: on GitHub click **Code > Download ZIP**, then unzip it.
+2. Open `chrome://extensions` in Chrome.
+3. Turn on **Developer mode** (top right).
+4. Click **Load unpacked** and choose the unzipped `Style-Spy-main` folder (the one that contains `manifest.json`).
+5. Pin Style Spy from the puzzle-piece menu if you like, then open any website and click its icon.
 
 After editing any file, press the reload button on the extension card.
 
@@ -44,3 +45,9 @@ Variables look like this: `--ss-text-1`, `--ss-bg-1`, `--ss-border-1`, `--ss-fon
 | A pasted kit styles the plain page | In a saved kit click **Copy CSS**. Open `demo.html` (double-click it), paste into the box, click **Apply kit to this page**. Colours and fonts change. **Reset to plain style** undoes it. |
 
 Notes: internal pages (`chrome://`, the Web Store) cannot be scanned; Chrome blocks that. Fonts in the exported CSS only show on the demo page if they are installed on your computer or the stack falls back to a generic family. Only the top frame of a page is scanned, not embedded iframes.
+
+## Tested
+
+- On a test cafe page the scan ranked the page background first at 62% and white second at 20%, which matches the screen.
+- Pasting a kit into `demo.html` changed its background, text colour and font.
+- Installed in Chrome with Load unpacked: scanning websites, copying colours and saved kits after a Chrome restart all work.
